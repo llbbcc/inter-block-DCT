@@ -16,6 +16,8 @@ parser.add_argument('--K', type=int, default=12, help='robust factor')
 parser.add_argument('--quality', type=int, default=80, help='quality of JPEG compress')
 parser.add_argument('--shuffle', type=bool, default=False, help='shuffle watermark or not')
 parser.add_argument('--attack', type=str, default='quality', help='attack options')
+parser.add_argument('--sample_size', type=int, default=384, help='sample size of smaple attack')
+parser.add_argument('--mask_loc', type=str, default='TR', help='mask location of mask attack')
 parser.add_argument('--options', type=str, choices=['embed', 'extract', 'attack', 'metrics'])
 args = parser.parse_args()
 
@@ -261,6 +263,8 @@ if __name__ == '__main__':
         K=args.K,
         quality=args.quality,
         shuffle=args.shuffle,
+        sample_size=args.sample_size,
+        mask_loc=args.mask_loc,
     )
     me = Metric()
     if args.options == 'embed':
